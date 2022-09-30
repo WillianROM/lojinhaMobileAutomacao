@@ -2,6 +2,7 @@ package modulos.produtos;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -26,8 +27,16 @@ public class ProdutoTest {
         WebDriver app = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capacidades); // Ver dados no Appium
 
         // Fazer Login
+        app.findElement(By.id("com.lojinha:id/user")).click();
+        app.findElement(By.id("com.lojinha:id/user")).findElement(By.id("com.lojinha:id/editText")).sendKeys("admin");
+
+        app.findElement(By.id("com.lojinha:id/password")).click();
+        app.findElement(By.id("com.lojinha:id/password")).findElement(By.id("com.lojinha:id/editText")).sendKeys("admin");
+
+        app.findElement(By.id("com.lojinha:id/loginButton")).click();
 
         // Abrir o formulário de novo produto
+        app.findElement(By.id("com.lojinha:id/floatingActionButton")).click();
 
         // Cadastrar um produto com valor inválido
 
